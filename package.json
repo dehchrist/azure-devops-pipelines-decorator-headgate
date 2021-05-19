@@ -1,0 +1,25 @@
+{
+  "name": "azure-pipelines-decorator-headgate",
+  "version": "0.1.5",
+  "description": "Azure DevOps Pipeline Decorator to scan pipeline tasks",
+  "scripts": {
+    "clean": "git clean -fdX",
+    "initdev:npm": "npm install --no-progress --no-update-notifier",
+    "initdev": "npm run initdev:npm",
+    "package:decorator": "npm prune --production && tfx extension create --root . --output-path dist --manifest-globs vss-extension.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dehchrist/azure-devops-pipelines-decorator-headgate.git"
+  },
+  "keywords": [
+    "DevOps",
+    "decorator",
+    "pipelines"
+  ],
+  "author": "Christian Dehaeseleer",
+  "license": "MIT",
+  "devDependencies": {
+    "tfx-cli": "^0.9.2"
+  }
+}

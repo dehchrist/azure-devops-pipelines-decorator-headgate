@@ -1,0 +1,15 @@
+steps:
+- task: Bash@3
+  displayName: Pipeline scan (injected)
+  inputs:
+    targetType: inline
+    script: |
+      echo "##[command]Checking for unauthorized tasks"
+- ${{ if containsValue(job.steps.*.task.id, 'ECDC45F6-832D-4AD9-B52B-EE49E94659BE') }}:
+  - task: Bash@3
+    displayName: Abort pipeline
+    inputs:
+      targetType: inline
+      script: |
+        echo "##vso[task.logissue type=error]The pipeline includes the forbidden task 'PublishPipelineArtifact'."
+        exit 1
